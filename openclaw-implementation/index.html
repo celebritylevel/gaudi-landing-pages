@@ -28,7 +28,9 @@
         .pricing-desc { font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.6; }
         .pricing-features { list-style: none; margin-bottom: 24px; }
         .pricing-features li { padding: 8px 0; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; }
-        .pricing-features li::before { content: '✓'; color: #10b981; font-weight: bold; }
+        .pricing-features li::before { content: '✓'; color: #10b981; font-weight: bold; flex-shrink: 0; }
+        .flair { font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 12px; margin-left: auto; white-space: nowrap; text-transform: uppercase; line-height: 1.2; flex-shrink: 0; margin-top: 1px; letter-spacing: 0.5px; }
+        .flair-hot { background: #ff005b; color: #ffffff; }
         .pricing-btn { display: block; width: 100%; padding: 14px 24px; border-radius: 10px; text-align: center; text-decoration: none; font-weight: 600; transition: all 0.2s; }
         .pricing-btn.primary { background: #10b981; color: white; }
         .pricing-btn.primary:hover { background: #059669; }
@@ -102,6 +104,9 @@
                         <li>Security hardening & guardrails</li>
                         <li>7 days of support</li>
                         <li>Delivery: 24h - 48h</li>
+                        <li><span style="flex: 1;">LinkedIn AI Agent — Auto-connect, engage, and generate leads</span><span class="flair flair-hot">HOT</span></li>
+                        <li><span style="flex: 1;">Cold Email AI Agent — Automated outreach sequences</span><span class="flair flair-hot">HOT</span></li>
+                        <li><span style="flex: 1;">Outbound Email Integration — Instantly/Outlook ready</span><span class="flair flair-hot">HOT</span></li>
                     </ul>
                     <a href="https://buy.stripe.com/5kQ4gy6WZaWceW75SxdfG19" class="pricing-btn primary">Get Professional →</a>
                 </div>
@@ -127,14 +132,7 @@
                 </div>
             </div>
             
-            <div class="comparison" style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%); border: 1px solid #f59e0b;">
-                <h2 style="color: #fbbf24;">🎁 BONUS — Included with Professional</h2>
-                <ul class="pricing-features" style="margin-bottom: 0;">
-                    <li>🔥 LinkedIn AI Agent — Auto-connect, engage, and generate leads</li>
-                    <li>🔥 Cold Email AI Agent — Automated outreach sequences</li>
-                    <li>🔥 Outbound Email Integration — Instantly/Outlook ready</li>
-                </ul>
-            </div>
+
             
             <div class="comparison">
                 <h2>📊 What You're Getting</h2>
