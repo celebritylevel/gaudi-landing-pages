@@ -1,73 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenClaw Implementation Service | Get Your AI Agent Running in 48 Hours</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e5e5e5; }
-        .hero { background: linear-gradient(135deg, #0f0f23 0%, #1a1a4a 50%, #0f0f23 100%); min-height: 100vh; padding: 60px 20px; }
-        .container { max-width: 1100px; margin: 0 auto; }
-        .badge { display: inline-block; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; padding: 6px 16px; border-radius: 20px; font-size: 13px; margin-bottom: 20px; }
-        h1 { font-size: 52px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; background: linear-gradient(135deg, #fff 0%, #6ee7b7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .subtitle { font-size: 22px; color: #94a3b8; margin-bottom: 40px; line-height: 1.6; }
-        .urgency { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; border-radius: 12px; padding: 16px 24px; margin-bottom: 40px; display: inline-block; }
-        .urgency-text { color: #fca5a5; font-size: 14px; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 60px; }
-        .pricing-card { background: #1a1a1a; border: 1px solid #333; border-radius: 20px; padding: 32px; transition: transform 0.2s, border-color 0.2s; }
-        .pricing-card:hover { transform: translateY(-4px); border-color: #4b5563; }
-        .pricing-card.featured { border-color: #10b981; position: relative; }
-        .pricing-card.featured::before { content: 'MOST POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 4px 16px; border-radius: 20px; font-size: 11px; font-weight: 600; }
-        .pricing-header { margin-bottom: 24px; }
-        .pricing-name { font-size: 18px; color: #888; margin-bottom: 8px; }
-        .pricing-price { font-size: 48px; font-weight: 800; color: #10b981; }
-        .pricing-original { font-size: 20px; color: #666; text-decoration: line-through; margin-right: 8px; }
-        .pricing-savings { font-size: 13px; color: #fca5a5; margin-top: 4px; }
-        .pricing-period { font-size: 14px; color: #666; }
-        .pricing-desc { font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.6; }
-        .pricing-features { list-style: none; margin-bottom: 24px; }
-        .pricing-features li { padding: 8px 0; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; }
-        .pricing-features li::before { content: '✓'; color: #10b981; font-weight: bold; flex-shrink: 0; }
-        .flair { font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 12px; margin-left: auto; white-space: nowrap; text-transform: uppercase; line-height: 1.2; flex-shrink: 0; margin-top: 1px; letter-spacing: 0.5px; }
-        .flair-hot { background: #ff005b; color: #ffffff; }
-        .pricing-btn { display: block; width: 100%; padding: 14px 24px; border-radius: 10px; text-align: center; text-decoration: none; font-weight: 600; transition: all 0.2s; }
-        .pricing-btn.primary { background: #10b981; color: white; }
-        .pricing-btn.primary:hover { background: #059669; }
-        .pricing-btn.secondary { background: #374151; color: #e5e5e5; }
-        .pricing-btn.secondary:hover { background: #4b5563; }
-        .comparison { background: rgba(255,255,255,0.02); border-radius: 16px; padding: 32px; margin-bottom: 40px; }
-        .comparison h2 { font-size: 20px; margin-bottom: 20px; }
-        .comparison table { width: 100%; border-collapse: collapse; }
-        .comparison th, .comparison td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #333; }
-        .comparison th { color: #888; font-weight: 500; font-size: 12px; text-transform: uppercase; }
-        .faq { margin-bottom: 60px; }
-        .faq h2 { font-size: 24px; margin-bottom: 24px; }
-        .faq-item { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; }
-        .faq-q { font-weight: 600; margin-bottom: 8px; }
-        .faq-a { color: #888; font-size: 14px; line-height: 1.6; }
-        .cta-final { text-align: center; padding: 60px 20px; background: linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(16,185,129,0.05) 100%); border-radius: 20px; }
-        .cta-final h2 { font-size: 28px; margin-bottom: 16px; }
-        .cta-final p { color: #888; margin-bottom: 24px; }
-        .trust { display: flex; justify-content: center; gap: 40px; margin-top: 40px; flex-wrap: wrap; }
-        .trust-item { text-align: center; }
-        .trust-value { font-size: 32px; font-weight: 800; color: #10b981; }
-        .trust-label { font-size: 12px; color: #888; }
-        footer { text-align: center; padding: 40px 20px; color: #666; font-size: 13px; }
-        footer a { color: #10b981; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a4a 50%, #0f0f23 100%);
+            min-height: 100vh;
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid #10b981;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #6ee7b7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .urgency {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+
+        .urgency-text {
+            color: #fca5a5;
+            font-size: 14px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 32px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            border-color: #4b5563;
+        }
+
+        .pricing-card.featured {
+            border-color: #10b981;
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #10b981;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .pricing-header {
+            margin-bottom: 24px;
+        }
+
+        .pricing-name {
+            font-size: 18px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 800;
+            color: #10b981;
+        }
+
+        .pricing-original {
+            font-size: 20px;
+            color: #666;
+            text-decoration: line-through;
+            margin-right: 8px;
+        }
+
+        .pricing-savings {
+            font-size: 13px;
+            color: #fca5a5;
+            margin-top: 4px;
+        }
+
+        .pricing-period {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .pricing-desc {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .flair {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: auto;
+            white-space: nowrap;
+            text-transform: uppercase;
+            line-height: 1.2;
+            flex-shrink: 0;
+            margin-top: 1px;
+            letter-spacing: 0.5px;
+        }
+
+        .flair-hot {
+            background: #ff005b;
+            color: #ffffff;
+        }
+
+        .pricing-btn {
+            display: block;
+            width: 100%;
+            padding: 14px 24px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .pricing-btn.primary {
+            background: #10b981;
+            color: white;
+        }
+
+        .pricing-btn.primary:hover {
+            background: #059669;
+        }
+
+        .pricing-btn.secondary {
+            background: #374151;
+            color: #e5e5e5;
+        }
+
+        .pricing-btn.secondary:hover {
+            background: #4b5563;
+        }
+
+        .comparison {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .comparison h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .comparison table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison th,
+        .comparison td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        .comparison th {
+            color: #888;
+            font-weight: 500;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .faq {
+            margin-bottom: 60px;
+        }
+
+        .faq h2 {
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        .faq-item {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 12px;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .faq-a {
+            color: #888;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .cta-final {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-radius: 20px;
+        }
+
+        .cta-final h2 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .cta-final p {
+            color: #888;
+            margin-bottom: 24px;
+        }
+
+        .trust {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #10b981;
+        }
+
+        .trust-label {
+            font-size: 12px;
+            color: #888;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #10b981;
+        }
     </style>
 </head>
+
 <body>
     <div class="hero">
         <div class="container">
             <div class="badge">⚡ Professional Implementation</div>
             <h1>Get OpenClaw Running<br>In Your Business — Fast</h1>
-            <p class="subtitle">Skip the learning curve. We set up your AI agent infrastructure,<br>integrations, and workflows. You start automating immediately.</p>
-            
+            <p class="subtitle">Skip the learning curve. We set up your AI agent infrastructure,<br>integrations, and
+                workflows. You start automating immediately.</p>
+
             <div class="urgency">
                 <span class="urgency-text">🔥 Launch pricing ends soon — Only 2 spots left at these prices</span>
             </div>
-            
+
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-header">
@@ -85,9 +359,10 @@
                         <li>7-day email support</li>
                         <li>Delivery: 48h - 72h</li>
                     </ul>
-                    <a href="https://buy.stripe.com/9B66oG4ORggwbJV6WBdfG18" class="pricing-btn secondary">Get Started →</a>
+                    <a href="https://buy.stripe.com/9B66oG4ORggwbJV6WBdfG18" class="pricing-btn secondary">Get Started
+                        →</a>
                 </div>
-                
+
                 <div class="pricing-card featured">
                     <div class="pricing-header">
                         <div class="pricing-name">Professional</div>
@@ -104,13 +379,16 @@
                         <li>Security hardening & guardrails</li>
                         <li>7 days of support</li>
                         <li>Delivery: 24h - 48h</li>
-                        <li><span style="flex: 1;">LinkedIn AI Agent — Auto-connect, engage, and generate leads</span><span class="flair flair-hot">HOT</span></li>
-                        <li><span style="flex: 1;">Cold Email AI Agent — Automated outreach sequences</span><span class="flair flair-hot">HOT</span></li>
-                        <li><span style="flex: 1;">Outbound Email Integration — Instantly/Outlook ready</span><span class="flair flair-hot">HOT</span></li>
+                        <li><span style="flex: 1;">LinkedIn AI Agent</span><span class="flair flair-hot">HOT</span></li>
+                        <li><span style="flex: 1;">Cold Email AI Agent</span><span class="flair flair-hot">HOT</span>
+                        </li>
+                        <li><span style="flex: 1;">Cold Outbound Email AI Agent</span><span
+                                class="flair flair-hot">HOT</span></li>
                     </ul>
-                    <a href="https://buy.stripe.com/5kQ4gy6WZaWceW75SxdfG19" class="pricing-btn primary">Get Professional →</a>
+                    <a href="https://buy.stripe.com/5kQ4gy6WZaWceW75SxdfG19" class="pricing-btn primary">Get
+                        Professional →</a>
                 </div>
-                
+
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <div class="pricing-name">Enterprise</div>
@@ -128,59 +406,102 @@
                         <li>Monthly check-ins for 3 months</li>
                         <li>Delivery: 1-2 weeks</li>
                     </ul>
-                    <a href="mailto:gaudi@ai-agents.io?subject=Enterprise%20OpenClaw%20Setup" class="pricing-btn secondary">Contact Us →</a>
+                    <a href="mailto:gaudi@ai-agents.io?subject=Enterprise%20OpenClaw%20Setup"
+                        class="pricing-btn secondary">Contact Us →</a>
                 </div>
             </div>
-            
 
-            
+
+
             <div class="comparison">
                 <h2>📊 What You're Getting</h2>
                 <table>
-                    <tr><th>Component</th><th>DIY</th><th>Professional Setup</th></tr>
-                    <tr><td>Setup Time</td><td>20-40 hours</td><td>3-5 days</td></tr>
-                    <tr><td>Learning Curve</td><td>Steep</td><td>Done for you</td></tr>
-                    <tr><td>Security</td><td>Your responsibility</td><td>Hardened by experts</td></tr>
-                    <tr><td>Integrations</td><td>Figure it out yourself</td><td>3 channels included</td></tr>
-                    <tr><td>Custom Skills</td><td>Build from scratch</td><td>3 tailored to your needs</td></tr>
-                    <tr><td>Support</td><td>Community forums</td><td>7 days direct support</td></tr>
-                    <tr><td>Value of Your Time</td><td>$2,000-$4,000</td><td>$1,997 all-in</td></tr>
+                    <tr>
+                        <th>Component</th>
+                        <th>DIY</th>
+                        <th>Professional Setup</th>
+                    </tr>
+                    <tr>
+                        <td>Setup Time</td>
+                        <td>20-40 hours</td>
+                        <td>3-5 days</td>
+                    </tr>
+                    <tr>
+                        <td>Learning Curve</td>
+                        <td>Steep</td>
+                        <td>Done for you</td>
+                    </tr>
+                    <tr>
+                        <td>Security</td>
+                        <td>Your responsibility</td>
+                        <td>Hardened by experts</td>
+                    </tr>
+                    <tr>
+                        <td>Integrations</td>
+                        <td>Figure it out yourself</td>
+                        <td>3 channels included</td>
+                    </tr>
+                    <tr>
+                        <td>Custom Skills</td>
+                        <td>Build from scratch</td>
+                        <td>3 tailored to your needs</td>
+                    </tr>
+                    <tr>
+                        <td>Support</td>
+                        <td>Community forums</td>
+                        <td>7 days direct support</td>
+                    </tr>
+                    <tr>
+                        <td>Value of Your Time</td>
+                        <td>$2,000-$4,000</td>
+                        <td>$1,997 all-in</td>
+                    </tr>
                 </table>
             </div>
-            
+
             <div class="faq">
                 <h2>❓ Frequently Asked Questions</h2>
                 <div class="faq-item">
                     <div class="faq-q">What is OpenClaw?</div>
-                    <div class="faq-a">OpenClaw is the #1 open-source AI agent platform. It autonomously handles tasks like customer support, lead generation, content creation, and workflow automation. It's trusted by 10,000+ businesses and has 180K+ GitHub stars.</div>
+                    <div class="faq-a">OpenClaw is the #1 open-source AI agent platform. It autonomously handles tasks
+                        like customer support, lead generation, content creation, and workflow automation. It's trusted
+                        by 10,000+ businesses and has 180K+ GitHub stars.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">Do I need technical skills?</div>
-                    <div class="faq-a">No. We handle everything. You just tell us what you want automated, and we set it up. After delivery, you interact with your AI agent via natural language — no coding required.</div>
+                    <div class="faq-a">No. We handle everything. You just tell us what you want automated, and we set it
+                        up. After delivery, you interact with your AI agent via natural language — no coding required.
+                    </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">What's the difference between tiers?</div>
-                    <div class="faq-a">Quick Start is for testing one use case. Professional is for production use with custom skills. Enterprise is for teams needing multiple agents and advanced integrations.</div>
+                    <div class="faq-a">Quick Start is for testing one use case. Professional is for production use with
+                        custom skills. Enterprise is for teams needing multiple agents and advanced integrations.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">What are ongoing costs?</div>
-                    <div class="faq-a">OpenClaw is open-source with no monthly fees. You pay only for your AI model usage (Claude, OpenAI, etc.) and hosting. Typical cost: $50-$200/month for most businesses.</div>
+                    <div class="faq-a">OpenClaw is open-source with no monthly fees. You pay only for your AI model
+                        usage (Claude, OpenAI, etc.) and hosting. Typical cost: $50-$200/month for most businesses.
+                    </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">Can you integrate with my tools?</div>
-                    <div class="faq-a">Yes. OpenClaw works with Slack, Discord, Telegram, Gmail, Salesforce, HubSpot, Notion, and 50+ more. If you use it, we can probably connect it.</div>
+                    <div class="faq-a">Yes. OpenClaw works with Slack, Discord, Telegram, Gmail, Salesforce, HubSpot,
+                        Notion, and 50+ more. If you use it, we can probably connect it.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">What if I need ongoing support?</div>
-                    <div class="faq-a">We offer Managed OpenClaw at $497/month for 24/7 monitoring, incident response, monthly optimization, and priority support.</div>
+                    <div class="faq-a">We offer Managed OpenClaw at $497/month for 24/7 monitoring, incident response,
+                        monthly optimization, and priority support.</div>
                 </div>
             </div>
-            
+
             <div class="cta-final">
                 <h2>Ready to Automate?</h2>
                 <p>Get your AI agent running in days, not weeks. No technical skills needed.</p>
-                <a href="https://buy.stripe.com/5kQ4gy6WZaWceW75SxdfG19" class="pricing-btn primary" style="display: inline-block; width: auto; padding: 18px 48px;">Get Started Now →</a>
-                
+                <a href="https://buy.stripe.com/5kQ4gy6WZaWceW75SxdfG19" class="pricing-btn primary"
+                    style="display: inline-block; width: auto; padding: 18px 48px;">Get Started Now →</a>
+
                 <div class="trust">
                     <div class="trust-item">
                         <div class="trust-value">48h</div>
@@ -200,27 +521,28 @@
                     </div>
                 </div>
             </div>
-            
+
             <footer>
                 <p>Built by <a href="#">Gaudi</a> • AI Agents Enterprise</p>
                 <p style="margin-top: 8px;">Questions? Email: gaudi@ai-agents.io</p>
             </footer>
         </div>
     </div>
-    
+
     <script>
-        document.getElementById('checkout-quick').addEventListener('click', function(e) {
+        document.getElementById('checkout-quick').addEventListener('click', function (e) {
             e.preventDefault();
             alert('Stripe checkout will open here. Contact gaudi@ai-agents.io to reserve your spot.');
         });
-        document.getElementById('checkout-pro').addEventListener('click', function(e) {
+        document.getElementById('checkout-pro').addEventListener('click', function (e) {
             e.preventDefault();
             alert('Stripe checkout will open here. Contact gaudi@ai-agents.io to claim your $500 discount.');
         });
-        document.getElementById('checkout-enterprise').addEventListener('click', function(e) {
+        document.getElementById('checkout-enterprise').addEventListener('click', function (e) {
             e.preventDefault();
             window.location.href = 'mailto:gaudi@ai-agents.io?subject=Enterprise OpenClaw Setup&body=Hi, I\'m interested in the Enterprise OpenClaw implementation. Please share more details.';
         });
     </script>
 </body>
+
 </html>
