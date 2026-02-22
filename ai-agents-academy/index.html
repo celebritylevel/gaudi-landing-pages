@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agents Academy | Community for AI Agent Builders</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e5e5e5; }
+        .hero { background: linear-gradient(135deg, #0f0f23 0%, #1a1a4a 50%, #2a1a5a 100%); min-height: 100vh; padding: 60px 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .badge { display: inline-block; background: rgba(139, 92, 246, 0.2); border: 1px solid #8b5cf6; padding: 6px 16px; border-radius: 20px; font-size: 13px; margin-bottom: 20px; }
+        h1 { font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; background: linear-gradient(135deg, #fff 0%, #c4b5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { font-size: 20px; color: #94a3b8; margin-bottom: 40px; line-height: 1.6; }
+        .features { display: grid; gap: 16px; margin-bottom: 40px; }
+        .feature { display: flex; align-items: flex-start; gap: 12px; background: rgba(255,255,255,0.03); padding: 16px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+        .feature-icon { font-size: 24px; }
+        .feature-text h3 { font-size: 16px; margin-bottom: 4px; }
+        .feature-text p { font-size: 14px; color: #94a3b8; }
+        .cta-box { background: linear-gradient(135deg, #1e1e4f 0%, #2a2a6f 100%); border: 1px solid #8b5cf6; border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 40px; }
+        .price { font-size: 56px; font-weight: 800; color: #c4b5fd; }
+        .price-note { color: #94a3b8; font-size: 14px; margin-bottom: 24px; }
+        .cta-btn { display: inline-block; background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); color: white; padding: 18px 48px; border-radius: 12px; font-size: 18px; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3); }
+        .guarantee { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; color: #94a3b8; font-size: 14px; }
+        .includes { background: rgba(255,255,255,0.02); border-radius: 16px; padding: 32px; margin-bottom: 40px; }
+        .includes h2 { font-size: 20px; margin-bottom: 20px; }
+        .includes ul { list-style: none; }
+        .includes li { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 12px; }
+        .includes li:last-child { border-bottom: none; }
+        .community { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px; }
+        .community-card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 20px; text-align: center; }
+        .community-card .emoji { font-size: 32px; margin-bottom: 12px; }
+        .community-card h3 { font-size: 16px; margin-bottom: 8px; }
+        .community-card p { font-size: 13px; color: #888; }
+        footer { text-align: center; padding: 40px 20px; color: #666; font-size: 13px; }
+        footer a { color: #8b5cf6; }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="badge">🎓 Community Access</div>
+            <h1>AI Agents Academy</h1>
+            <p class="subtitle">The community for professionals building AI agent businesses.<br>Weekly insights, templates, networking, and deal flow.</p>
+            
+            <div class="community">
+                <div class="community-card">
+                    <div class="emoji">💬</div>
+                    <h3>Private Discord</h3>
+                    <p>Connect with AI agent founders and builders</p>
+                </div>
+                <div class="community-card">
+                    <div class="emoji">📚</div>
+                    <h3>Weekly Insights</h3>
+                    <p>Market trends, use cases, and monetization strategies</p>
+                </div>
+                <div class="community-card">
+                    <div class="emoji">🛠️</div>
+                    <h3>Templates & Tools</h3>
+                    <p>Agent workflows, prompts, and automation blueprints</p>
+                </div>
+                <div class="community-card">
+                    <div class="emoji">🤝</div>
+                    <h3>Deal Flow</h3>
+                    <p>Partnerships, client referrals, and collaboration</p>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">🎯</span>
+                    <div class="feature-text">
+                        <h3>Built for Builders</h3>
+                        <p>Founders, consultants, agencies, and professionals building AI agent products and services</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">💡</span>
+                    <div class="feature-text">
+                        <h3>Real Use Cases</h3>
+                        <p>What's working NOW — not theory. Templates from proven AI agent businesses</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">📈</span>
+                    <div class="feature-text">
+                        <h3>Revenue Strategies</h3>
+                        <p>Pricing models, GTM tactics, and scaling frameworks for AI agent businesses</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🔌</span>
+                    <div class="feature-text">
+                        <h3>Tool Access</h3>
+                        <p>Discounts and early access to AI agent tools, platforms, and APIs</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-box">
+                <div class="price">$47<span style="font-size: 20px; color: #888;">/month</span></div>
+                <div class="price-note">Cancel anytime • Instant Discord access</div>
+                <a href="https://buy.stripe.com/bJe6oG9578O44ht5SxdfG17" class="cta-btn">Join the Academy →</a>
+                <div class="guarantee">✓ First 7 days satisfaction guarantee</div>
+            </div>
+            
+            <div class="includes">
+                <h2>🎓 What's Included</h2>
+                <ul>
+                    <li><span>✓</span> Private Discord community access</li>
+                    <li><span>✓</span> Weekly AI agent market insights</li>
+                    <li><span>✓</span> Agent workflow templates</li>
+                    <li><span>✓</span> Monthly live Q&A sessions</li>
+                    <li><span>✓</span> Member directory for partnerships</li>
+                    <li><span>✓</span> Deal flow and referral network</li>
+                    <li><span>✓</span> Tool discounts and early access</li>
+                    <li><span>✓</span> Archive of all past resources</li>
+                </ul>
+            </div>
+            
+            <div style="background: rgba(139,92,246,0.1); border: 1px solid #8b5cf6; border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 40px;">
+                <h3 style="color: #c4b5fd; margin-bottom: 12px;">🎁 Founding Member Bonus</h3>
+                <p style="color: #a5b4fc;">Join now and get a free Playbook of your choice ($29-$47 value)</p>
+            </div>
+            
+            <footer>
+                <p>Built by <a href="#">Gaudi</a> • AI Agents Enterprise</p>
+                <p style="margin-top: 8px;">Questions? Reach out: gaudi@ai-agents.io</p>
+            </footer>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('checkout-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Stripe subscription checkout will be configured here.');
+        });
+    </script>
+</body>
+</html>
